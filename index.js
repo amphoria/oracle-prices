@@ -39,7 +39,11 @@ function round(num, digits) {
     return Math.round(num * 10**digits) / 10**digits
 }
 
-ethPrice.textContent = round(await getEthPrice(), 3)
-const oeth = await getOethPrice()
-oethPrice.textContent = round(Number(ethers.formatUnits(oeth, 8)), 3)
-osethPrice.textContent = round(await getOsethPrice(), 3)
+async function main() {
+    ethPrice.textContent = round(await getEthPrice(), 3)
+    const oeth = await getOethPrice()
+    oethPrice.textContent = round(Number(ethers.formatUnits(oeth, 8)), 3)
+    osethPrice.textContent = round(await getOsethPrice(), 3)
+}
+
+main()
