@@ -1,5 +1,5 @@
-import {ethers} from "ethers";
-import redstone from "redstone-api";
+import {ethers} from "ethers"
+import redstone from "redstone-api"
 
 const ethPrice = document.getElementById('eth-price')
 const osethPrice = document.getElementById('oseth-price')
@@ -15,7 +15,7 @@ const diaABI =
 
 // Ethers provider objects
 const ethProvider = 
-    new ethers.JsonRpcProvider("https://mainnet.infura.io/v3/ca1b1cda8d6940e6af90ec7b1b8cf84d")
+    new ethers.JsonRpcProvider("https://mainnet.infura.io/v3/" + process.env.INFURA_API_KEY)
 
 // Ethers contract object
 const diaContract = new ethers.Contract(diaAddress, diaABI, ethProvider)
