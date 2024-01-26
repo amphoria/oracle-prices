@@ -14,8 +14,10 @@ const diaABI =
 ]
 
 // Ethers provider objects
+// const ethProvider = 
+//     new ethers.JsonRpcProvider("https://mainnet.infura.io/v3/" + process.env.INFURA_API_KEY)
 const ethProvider = 
-    new ethers.JsonRpcProvider("https://mainnet.infura.io/v3/" + process.env.INFURA_API_KEY)
+    new ethers.JsonRpcProvider("https://mainnet.infura.io/v3/ca1b1cda8d6940e6af90ec7b1b8cf84d")
 
 // Ethers contract object
 const diaContract = new ethers.Contract(diaAddress, diaABI, ethProvider)
