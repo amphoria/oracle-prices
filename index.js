@@ -97,7 +97,7 @@ async function main() {
     const primeEthRatio = round(Number(ethers.formatUnits(await getPrimeEthRatio(), 18)), 8)
     primeEthPriceRatio.textContent = primeEthRatio
     primeEthPrice.textContent = round(ethPriceUsd * primeEthRatio, 3)
-    const reEthRatio = round(Number(ethers.formatUnits(await getREETHPriceRatio(), 18)), 8)
+    const reEthRatio = ethers.formatUnits(await getREETHPriceRatio())
     reETHPriceRatio.textContent = reEthRatio
     const ustbRatio = ethers.formatUnits(await getUSTBPriceRatio())
     ustbPriceRatio.textContent = ustbRatio
