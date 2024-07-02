@@ -7,6 +7,7 @@ const oethPrice = document.getElementById('oeth-price')
 const primeEthPriceRatio = document.getElementById('prime-eth-ratio')
 const primeEthPrice = document.getElementById('prime-eth-price')
 const reETHPriceRatio = document.getElementById('reeth-price-ratio')
+const ukrePrice = document.getElementById('ukre-price')
 
 // DIA Oracle for OETH/ETH
 const diaAddress = "0xAB9e20E8aB03C4F9476531B3ba3A0fc522Cd0FAa"
@@ -31,6 +32,13 @@ const reETHABI =
     "function tokenPrice() view returns (uint256)"
 ]
 
+// UKRE price
+const ukreAddress = "0x835d3E1C0aA079C6164AAd21DCb23E60eb71AF48"
+const ukreABI =
+[
+    "function getSharePrice() view returns (uint256)"
+]
+
 // Ethers provider objects
 // const ethProvider = 
 //     new ethers.JsonRpcProvider("https://mainnet.infura.io/v3/" + process.env.INFURA_API_KEY)
@@ -44,6 +52,7 @@ const primeETHOracleContract = new ethers.Contract(primeETHOracleAddress,
                                                    primeETHOracleABI, 
                                                    ethProvider)
 const reETHContract = new ethers.Contract(reETHAddress, reETHABI, ethProvider)
+const ukreContract = new ethers.Contract(ukreAddress, ukreABI, realProvider)
 
 function round(num, digits) {
     return Math.round(num * 10**digits) / 10**digits
@@ -74,6 +83,11 @@ async function getREETHPriceRatio() {
     return reETHPriceRatio
 }
 
+async function getUKREPrice() {
+    const ukrePrice = await ukreContract.getSharePrice()
+    return ukrePrice
+}
+
 async function main() {
     const ethPriceUsd = await getEthPrice()
     ethPrice.textContent = round(ethPriceUsd, 3)
@@ -85,6 +99,7 @@ async function main() {
     primeEthPrice.textContent = round(ethPriceUsd * primeEthRatio, 3)
     const reEthRatio = ethers.formatUnits(await getREETHPriceRatio())
     reETHPriceRatio.textContent = reEthRatio
+    ukrePrice.textContent = ethers.formatUnits(await getUKREPrice())
 }
 
 main()
