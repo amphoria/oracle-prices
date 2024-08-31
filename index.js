@@ -40,10 +40,8 @@ const ukreABI =
 ]
 
 // Ethers provider objects
-// const ethProvider = 
-//     new ethers.JsonRpcProvider("https://mainnet.infura.io/v3/" + process.env.INFURA_API_KEY)
 const ethProvider = 
-    new ethers.JsonRpcProvider("https://mainnet.infura.io/v3/ca1b1cda8d6940e6af90ec7b1b8cf84d")
+    new ethers.JsonRpcProvider("https://eth-mainnet.g.alchemy.com/v2/JTXUw4DQJ0PEVskCBSsadhBnk3rkd4vN")
 // const realProvider = new ethers.JsonRpcProvider("https://real.drpc.org")
 const realProvider = new ethers.JsonRpcProvider("https://tangible-real.gateway.tenderly.co/29G4PChJRVFiAJiyQg1FnC")
 
